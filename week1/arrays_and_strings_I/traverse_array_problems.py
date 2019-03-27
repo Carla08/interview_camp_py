@@ -40,6 +40,24 @@ def find_contiguos_to_sort_subarray(arr):
     # Total run time = O(n)
     return start_return, end_return
 
+def move_zeros_to_end(arr):
+    """
+    Move all zeroes to the end of the given integer array.
+    For example, if A = [2,3,0,3,0,1,0], Output = [2,3,3,1,0,0,0].
+    """
+    start = 0
+    end = len(arr) - 1
 
+    # O(n)
+    while start <= end:
+        if arr[start] != 0:
+            start += 1
+            continue
+        if arr[end] == 0:
+            end -= 1
+            continue
+        # if it got to this points means arr[start] == 0 and arr[end] != 0
+        # swap
+        arr[end], arr[start] = arr[start], arr[end]
 
-
+    return arr
