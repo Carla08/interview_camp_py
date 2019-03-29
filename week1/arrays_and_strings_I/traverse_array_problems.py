@@ -40,6 +40,7 @@ def find_contiguos_to_sort_subarray(arr):
     # Total run time = O(n)
     return start_return, end_return
 
+
 def move_zeros_to_end(arr):
     """
     Move all zeroes to the end of the given integer array.
@@ -61,3 +62,39 @@ def move_zeros_to_end(arr):
         arr[end], arr[start] = arr[start], arr[end]
 
     return arr
+
+
+def mexican_flag(arr):
+    """
+    Given an array with n objects colored Red, White or Green, sort them so that objects
+    of the same color are adjacent, with the colors in the order Red, White and Green.
+    Assume the colors are given as numbers - 0 (Red), 1 (White) and 2 (Green).
+    For example, if A = [1,0,1,2,1,0,1,2], Output = [0,0,1,1,1,1,2,2].
+    """
+    # HARDCODED PIVOT:
+    pivot = 1
+    low = 0
+    high = len(arr) - 1
+    mid = 0
+
+    while mid <= high:
+        to_place = arr[mid]
+        if to_place > pivot:
+            arr[mid],arr[high] = arr[high], arr[mid]
+            high -= 1
+        elif to_place == pivot:
+            mid += 1
+        elif to_place < pivot:
+            arr[low], arr[mid] = arr[mid], arr[low]
+            low += 1
+            mid += 1
+        print(arr)
+    return arr
+
+
+
+
+
+
+
+
