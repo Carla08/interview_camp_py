@@ -92,9 +92,27 @@ def mexican_flag(arr):
     return arr
 
 
-
-
-
-
-
-
+def find_contiguos_subarray_sums_x(arr, x):
+    # NOTE: Find one contiguos subarray which sums x. To find all subarrays
+    # it's a DP problem not covered here.
+    # create common diff arr
+    # O(n)
+    common_diff = []
+    diff_map = {}
+    for i,n in enumerate(arr):
+        try:
+            diff = common_diff[i - 1] + n
+            common_diff.append(diff)
+            diff_to_x = diff - x
+            if diff == x:
+                print(0, i)
+                return 0, i
+            elif diff_to_x in diff_map:
+                print(diff_map[diff_to_x] + 1, i)
+                return diff_map[diff_to_x] + 1, i
+            else:
+                diff_map[diff] = i
+        except IndexError:
+            common_diff.append(n)
+            diff_map[n] = i
+            continue

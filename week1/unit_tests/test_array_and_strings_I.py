@@ -1,7 +1,7 @@
 import unittest
 from assertpy import assert_that
 from week1.arrays_and_strings_I.traverse_array_problems import find_contiguos_to_sort_subarray, \
-    move_zeros_to_end, mexican_flag
+    move_zeros_to_end, mexican_flag, find_contiguos_subarray_sums_x
 
 
 class TestArrayStrings_I(unittest.TestCase):
@@ -25,3 +25,10 @@ class TestArrayStrings_I(unittest.TestCase):
         arr = [1, 0, 1, 2, 1, 0, 1, 2]
         mex_flag = mexican_flag(arr)
         assert_that(mex_flag).is_equal_to([0, 0, 1, 1, 1, 1, 2, 2])
+
+    def test_subarray_sum_to_x(self):
+        arr = [-2, -3, 3, -6, 4, 3, -2, 0, 7]
+        x = 1
+        index_start, index_end = find_contiguos_subarray_sums_x(arr, x)
+        assert_that(index_start).is_equal_to(2)
+        assert_that(index_end).is_equal_to(4)
