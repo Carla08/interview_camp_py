@@ -1,7 +1,7 @@
 import unittest
 from week1.recursion.memoization import x_power_n
 from week1.recursion.comb_and_perm import get_combos_length_n, phone_to_num, \
-    get_permutations_length_n
+    get_permutations_length_n, get_all_subsets
 from assertpy import assert_that
 
 
@@ -30,3 +30,9 @@ class TestRecursion(unittest.TestCase):
         expected_permutations = [[1,2], [1, 3], [2, 1], [2, 3], [3, 1], [3, 2]]
         for permutation in get_permutations_length_n(arr, 2):
             assert_that(permutation in expected_permutations).is_true()
+
+    def test_get_all_subsets(self):
+        arr = [1, 2, 3]
+        expected_subsets = [[], [1], [1, 2], [1, 2, 3], [1, 3], [2], [2, 3], [3]]
+        for subset in get_all_subsets(arr):
+            assert_that(subset in expected_subsets).is_true()

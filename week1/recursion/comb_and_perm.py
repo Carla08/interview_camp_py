@@ -56,3 +56,18 @@ def get_permutations_helper(arr, buffer, buff_index, _n):
 def get_permutations_length_n(arr, n):
     buffer = [None] * n
     yield from get_permutations_helper(arr, buffer, 0, n)
+
+
+def get_all_subsets_helper(_set, subset, arr_index):
+    yield subset
+    if arr_index == len(_set):
+        return
+    else:
+        for i in range(arr_index, len(_set)):
+            subset.append(_set[i])
+            yield from get_all_subsets_helper(_set, subset, i + 1)
+            subset.remove(_set[i])
+            #arr_index -= 1
+
+def get_all_subsets(arr):
+    yield from get_all_subsets_helper(arr, [], 0)
